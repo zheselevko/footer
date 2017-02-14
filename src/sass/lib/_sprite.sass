@@ -1,0 +1,92 @@
+$icons: (0:0)
+$icons: map-merge($icons,(codedby: (X: -90px, Y:-87px, W: 47px, H: 5px, TW: 151px, TH: 119px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(coderiver: (X: -37px, Y:-87px, W: 49px, H: 5px, TW: 151px, TH: 119px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(fb: (X: -117px, Y:0px, W: 34px, H: 32px, TW: 151px, TH: 119px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(liqpay: (X: 0px, Y:-62px, W: 112px, H: 21px, TW: 151px, TH: 119px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(privat: (X: 0px, Y:-35px, W: 109px, H: 23px, TW: 151px, TH: 119px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(tw: (X: -117px, Y:-36px, W: 33px, H: 32px, TW: 151px, TH: 119px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(visa: (X: 0px, Y:0px, W: 113px, H: 31px, TW: 151px, TH: 119px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(vk: (X: 0px, Y:-87px, W: 33px, H: 32px, TW: 151px, TH: 119px, IMG: '../img/icons.png')))
+
+
+// Gets an attribute from the sass map
+@function icon-attr($icon, $attr)
+	$icon: map-get($icons, $icon)
+	@return map-get($icon, $attr)
+
+@mixin sprite($iconName)
+	background-image: url(icon-attr($iconName, IMG))
+	width: icon-attr($iconName, W)
+	height: icon-attr($iconName, H)
+	background-position: icon-attr($iconName, X) icon-attr($iconName, Y)
+@mixin sprite-position($iconName)
+	background-position: icon-attr($iconName, X) icon-attr($iconName, Y)
+@mixin sprite-retina($iconName)
+	background-image: url(icon-attr($iconName, IMG))
+	$width: icon-attr($iconName, W)
+	$height: icon-attr($iconName, H)
+	width: $width/2
+	height: $height/2
+	$x: icon-attr($iconName, X)
+	$y: icon-attr($iconName, Y)
+	background-position: $x/2 $y/2
+	$tw: icon-attr($iconName, TW) 	
+	$th: icon-attr($iconName, TH)
+	background-size: $tw/2 $th/2  	
+
+
+@mixin s($i)
+	+sprite($i)
+@mixin sp($i)
+	+sprite-position($i)
+@mixin sr($i)
+	+sprite-retina($i)	
+
+//
+//.icon-codedby
+//	width: 47px
+//	height: 5px
+//	background-image: url('../img/icons.png')
+//	background-position: -90px -87px
+//
+//.icon-coderiver
+//	width: 49px
+//	height: 5px
+//	background-image: url('../img/icons.png')
+//	background-position: -37px -87px
+//
+.icon-fb
+	width: 34px
+	height: 32px
+	background-image: url('../img/icons.png')
+	background-position: -117px 0px
+
+.icon-liqpay
+	width: 112px
+	height: 21px
+	background-image: url('../img/icons.png')
+	background-position: 0px -62px
+
+.icon-privat
+	width: 109px
+	height: 23px
+	background-image: url('../img/icons.png')
+	background-position: 0px -35px
+
+.icon-tw
+	width: 33px
+	height: 32px
+	background-image: url('../img/icons.png')
+	background-position: -117px -36px
+
+.icon-visa
+	width: 113px
+	height: 31px
+	background-image: url('../img/icons.png')
+	background-position: 0px 0px
+
+.icon-vk
+	width: 33px
+	height: 32px
+	background-image: url('../img/icons.png')
+	background-position: 0px -87px
